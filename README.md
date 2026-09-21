@@ -55,7 +55,8 @@ s3_profile: prod
 
 > [!IMPORTANT]
 > At least one output type must be enabled. One or more of `export_rgb`, `export_ms`, or `export_crf` must be set to `true`.
-> Deleting the input directory and the locally created outputs is only possible after a successful S3 upload. Therefore, remove_local=True requires s3_export=True.
+> [!IMPORTANT]
+> Deleting the input directory and the locally created outputs is only possible after a successful S3 upload. Therefore, `remove_local: true` requires `s3_export: true`.
 
 | Parameter | Status | Type | Default | Description |
 |----------|--------|------|---------|-------------|
