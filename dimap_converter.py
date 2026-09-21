@@ -51,7 +51,7 @@ if __name__ == "__main__":
         recursive=True
     )
 
-    filepath = build_filepath(output_dir)   # <-- construct a base filepath for saving outputs
+    filepath = build_filepath(output_dir, scene)   # <-- construct a base filepath for saving outputs
 
     # create the outputs chosen in the config
     outputs = export_from_dim(

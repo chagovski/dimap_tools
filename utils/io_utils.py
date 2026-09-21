@@ -35,36 +35,35 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
-def build_filepath(out_folder: str) -> str:
+def build_filepath(output_dir: str, scene_name: str) -> str:
     """
-    Ensure the output directory exists and construct a base filepath
-    to which file extensions can later be appended.
+    Build a base filepath inside <output_dir>/PROCESSED folder.
 
     For example:
-        "/tmp/AUT_Vienna_PNEO_01Jan2026" -> "/tmp/AUT_Vienna_PNEO_01Jan2026/AUT_Vienna_PNEO_01Jan2026"
+        output_dir = "/tmp/AUT_Vienna_PNEO_01Jan2026/PROCESSED"
+        scene_name = "AUT_Vienna_PNEO_01Jan2026"
+
+    returns:
+        "/tmp/AUT_Vienna_PNEO_01Jan2026/PROCESSED/AUT_Vienna_PNEO_01Jan2026"
 
     Args:
-        out_folder: Path to the output directory, expected to follow the schema
-            ISO3_Location_Sensor_Date, e.g. "AUT_Vienna_PNEO_01Jan2026".
+        output_dir: Path to the scene input directory.
+        scene_name: Scene name to use for the base filename.
 
     Returns:
-        A base filepath for saving outputs with their respective extensions added later.
+        A base filepath for saving outputs with file extensions appended later.
     """
-    out_folder = os.path.normpath(out_folder)
+    output_dir = os.path.normpath(output_dir)
+    scene_name = scene_name.strip()
 
-    os.makedirs(out_folder, exist_ok=True)
+    if not scene_name:
+        raise ValueError("scene_name must not be empty")
 
-    folder_name = os.path.basename(out_folder)
-    if not folder_name:
-        raise ValueError(
-            f"Could not derive folder name from output directory: {out_folder}"
-        )
+    base_filepath = os.path.join(output_dir, scene_name)
+    os.makedirs(output_dir, exist_ok=True)
 
-    return os.path.join(out_folder, folder_name)
+    return base_filepath
 
-
-import glob
-import os
 
 
 def zip_locator(input_folder: str, pattern: str = "*.zip") -> str:
