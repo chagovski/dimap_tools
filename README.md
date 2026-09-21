@@ -1,6 +1,6 @@
 # DIMAP TOOLS
 
-This repository provides tools to process Airbus imagery products (SPOT, P1, and PNEO) directly from `DIMAP.xml` files, generate raster outputs, and upload the results to the corresponding S3 buckets.
+This repository contains a set of tools to process Airbus imagery products (SPOT, P1, and PNEO) directly from `DIMAP.xml` files, generate raster outputs, and upload the results to the corresponding S3 buckets.
 
 ## Features
 
