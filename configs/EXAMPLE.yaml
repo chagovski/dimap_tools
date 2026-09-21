@@ -1,0 +1,21 @@
+# --- INPUTS: Required ---
+scene: AUT_Vienna_PNEO_01Sep2026
+input_root: I:\IMAGERY
+
+# --- OUTPUTS: Required ---
+export_rgb: false
+export_ms: false
+export_crf: false
+
+# --- EXPORT & CLEANUP: Required ---
+s3_export: false
+remove_local: false # <-- ONLY possible after successful s3 upload
+
+# --- DEFAULTS: Optional ---
+dimap_pattern: DIM*.XML
+stats: true
+overviews: true
+nodata_value: 0
+data_type: 16_BIT_UNSIGNED
+rgb_bands: [1, 2, 3]
+s3_profile: prod
