@@ -55,6 +55,7 @@ s3_profile: prod
 
 > [!IMPORTANT]
 > At least one output type must be enabled. One or more of `export_rgb`, `export_ms`, or `export_crf` must be set to `true`.
+> Deleting the input directory and the locally created outputs is only possible after a successful S3 upload. Therefore, remove_local=True requires s3_export=True.
 
 | Parameter | Status | Type | Default | Description |
 |----------|--------|------|---------|-------------|
@@ -86,6 +87,8 @@ python dimap_converter.py configs/AUT_Vienna_SPOT_01Sep2026.yaml
 At present, the repository includes a single integration test for validating AWS authentication, connectivity, and basic S3 operations.
 
 ### Run the test
+
+Run the test from the repository root:
 
 ```bash
 python /path/to/repository/tests/test_s3.py
